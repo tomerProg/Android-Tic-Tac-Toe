@@ -2,6 +2,7 @@ package com.example.tictactoe
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private var board: Board? = null
     private var currentPlayer:PlayerSign  = PlayerSign.X
     private var tvStatus: TextView? = null
+    private var playAgainButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +29,9 @@ class MainActivity : AppCompatActivity() {
 
         this.board = createBoard()
         this.tvStatus = findViewById(R.id.tvStatus)
-        findViewById<Button>(R.id.btnReset).setOnClickListener { resetGame() }
+        this.playAgainButton = findViewById(R.id.btnPlayAgain)
+        this.playAgainButton?.setOnClickListener { resetGame() }
+        this.resetGame()
     }
 
     private fun createBoard(): Board{
@@ -69,8 +73,10 @@ class MainActivity : AppCompatActivity() {
         if (this.board?.hasWinner() == true) {
             tvStatus?.text = "Player ${this.currentPlayer} Wins!"
             this.board?.disableButtons()
+            this.playAgainButton?.visibility = View.VISIBLE
         } else if (this.board?.isFull() == true) {
             tvStatus?.text = "It's a Draw!"
+            this.playAgainButton?.visibility = View.VISIBLE
         } else {
             currentPlayer = if (currentPlayer == PlayerSign.X) PlayerSign.O else PlayerSign.X
             tvStatus?.text = "Player ${this.currentPlayer}'s Turn"
@@ -82,5 +88,6 @@ class MainActivity : AppCompatActivity() {
         this.board?.reset()
         this.currentPlayer= PlayerSign.X
         this.tvStatus?.text = "Player X's Turn"
+        this.playAgainButton?.visibility = View.INVISIBLE
     }
 }
