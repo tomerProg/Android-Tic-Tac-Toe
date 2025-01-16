@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
     private var board: Board? = null
     private var currentPlayer:PlayerSign  = PlayerSign.X
-    private var tvStatus: TextView? = null
+    private var gameStatus: TextView? = null
     private var playAgainButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.board = createBoard()
-        this.tvStatus = findViewById(R.id.tvStatus)
+        this.gameStatus = findViewById(R.id.gameStatus)
         this.playAgainButton = findViewById(R.id.btnPlayAgain)
         this.playAgainButton?.setOnClickListener { resetGame() }
         this.resetGame()
@@ -71,15 +71,15 @@ class MainActivity : AppCompatActivity() {
         boardGrid?.putPlayerSign(this.currentPlayer)
 
         if (this.board?.hasWinner() == true) {
-            tvStatus?.text = "Player ${this.currentPlayer} Wins!"
+            gameStatus?.text = "Player ${this.currentPlayer} Wins!"
             this.board?.disableButtons()
             this.playAgainButton?.visibility = View.VISIBLE
         } else if (this.board?.isFull() == true) {
-            tvStatus?.text = "It's a Draw!"
+            gameStatus?.text = "It's a Draw!"
             this.playAgainButton?.visibility = View.VISIBLE
         } else {
             currentPlayer = if (currentPlayer == PlayerSign.X) PlayerSign.O else PlayerSign.X
-            tvStatus?.text = "Player ${this.currentPlayer}'s Turn"
+            gameStatus?.text = "Player ${this.currentPlayer}'s Turn"
         }
     }
 
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     private fun resetGame() {
         this.board?.reset()
         this.currentPlayer= PlayerSign.X
-        this.tvStatus?.text = "Player X's Turn"
+        this.gameStatus?.text = "Player X's Turn"
         this.playAgainButton?.visibility = View.INVISIBLE
     }
 }

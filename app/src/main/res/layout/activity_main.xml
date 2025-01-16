@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvStatus"
+        android:id="@+id/gameStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnPlayAgain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStatus">
+        app:layout_constraintTop_toBottomOf="@+id/gameStatus">
 
         <ImageButton
             android:id="@+id/btn00"
