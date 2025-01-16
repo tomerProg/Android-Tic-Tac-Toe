@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvStatus"
+        android:id="@+id/gameStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -25,10 +25,10 @@
         android:layout_height="wrap_content"
         android:columnCount="3"
         android:rowCount="3"
-        app:layout_constraintBottom_toTopOf="@+id/btnReset"
+        app:layout_constraintBottom_toTopOf="@+id/btnPlayAgain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStatus">
+        app:layout_constraintTop_toBottomOf="@+id/gameStatus">
 
         <ImageButton
             android:id="@+id/btn00"
@@ -86,11 +86,12 @@
     </GridLayout>
 
     <Button
-        android:id="@+id/btnReset"
+        android:id="@+id/btnPlayAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="Reset Game"
+        android:text="Play Again"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
